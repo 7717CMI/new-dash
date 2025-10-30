@@ -4,6 +4,7 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
+import Logo from "../../components/Logo";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
@@ -14,6 +15,7 @@ import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MedicationOutlinedIcon from "@mui/icons-material/MedicationOutlined";
 import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
+import ContactMailOutlinedIcon from "@mui/icons-material/ContactMailOutlined";
 
 function Item({ title, to, icon, isActive }) {
   const theme = useTheme();
@@ -86,25 +88,8 @@ function Sidebar({ isCollapsed, setIsCollapsed }) {
           </MenuItem>
 
           {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <LocalHospitalOutlinedIcon
-                  sx={{ fontSize: "100px", color: colors.greenAccent[500] }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Vaccine Market
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Analytics Dashboard
-                </Typography>
-              </Box>
+            <Box mb="25px" display="flex" justifyContent="center" alignItems="center">
+              <Logo size="medium" />
             </Box>
           )}
 
@@ -172,6 +157,12 @@ function Sidebar({ isCollapsed, setIsCollapsed }) {
               to="/fdf"
               icon={<ScienceOutlinedIcon />}
               isActive={location.pathname === "/fdf"}
+            />
+            <Item
+              title="Contact Us"
+              to="/contact"
+              icon={<ContactMailOutlinedIcon />}
+              isActive={location.pathname === "/contact"}
             />
           </Box>
         </Menu>

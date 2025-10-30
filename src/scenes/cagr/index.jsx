@@ -149,22 +149,22 @@ function CAGR() {
       <Grid container spacing={2} sx={{ mb: "20px" }}>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.avgCAGR} subtitle="Avg CAGR %" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.75" />
+            <StatBox title={kpis.avgCAGR} subtitle="Avg CAGR %" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.topSegment} subtitle="Highest Growth Segment" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.70" />
+            <StatBox title={kpis.topSegment} subtitle="Highest Growth Segment" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.maxCAGR} subtitle="Max CAGR" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.60" />
+            <StatBox title={kpis.maxCAGR} subtitle="Max CAGR" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.minCAGR} subtitle="Min CAGR" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.65" />
+            <StatBox title={kpis.minCAGR} subtitle="Min CAGR" icon={<TrendingUpOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
       </Grid>

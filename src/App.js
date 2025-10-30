@@ -14,6 +14,7 @@ import MSAComparison from "./scenes/msa-comparison";
 import Procurement from "./scenes/procurement";
 import BrandDemographic from "./scenes/brand-demographic";
 import FDF from "./scenes/fdf";
+import Contact from "./scenes/contact";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -46,6 +47,7 @@ function App() {
                     <Route path="/procurement" element={<Procurement />} />
                     <Route path="/brand-demographic" element={<BrandDemographic />} />
                     <Route path="/fdf" element={<FDF />} />
+                    <Route path="/contact" element={<Contact />} />
                   </Routes>
                 </Box>
               </main>

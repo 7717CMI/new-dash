@@ -196,7 +196,7 @@ function VaccinationRate() {
               title={kpis.avgVaxRate}
               subtitle="Avg Vaccination Rate"
               icon={<HealingOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress="0.75"
+              progress={null}
             />
           </Box>
         </Grid>
@@ -206,7 +206,7 @@ function VaccinationRate() {
               title={kpis.avgCovRate}
               subtitle="Coverage Rate"
               icon={<HealingOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress="0.70"
+              progress={null}
             />
           </Box>
         </Grid>
@@ -216,7 +216,7 @@ function VaccinationRate() {
               title={kpis.topRegion}
               subtitle="Top Performing Region"
               icon={<HealingOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress="0.60"
+              progress={null}
             />
           </Box>
         </Grid>
@@ -226,7 +226,7 @@ function VaccinationRate() {
               title={kpis.numCountries}
               subtitle="Countries Analyzed"
               icon={<HealingOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress="0.65"
+              progress={null}
             />
           </Box>
         </Grid>

@@ -174,22 +174,22 @@ function Pricing() {
       <Grid container spacing={2} sx={{ mb: "20px" }}>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.avgPrice} subtitle="Avg Price (USD)" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.75" />
+            <StatBox title={kpis.avgPrice} subtitle="Avg Price (USD)" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.avgElasticity} subtitle="Price Elasticity" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.70" />
+            <StatBox title={kpis.avgElasticity} subtitle="Price Elasticity" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.topBrand} subtitle="Most Expensive Brand" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.60" />
+            <StatBox title={kpis.topBrand} subtitle="Most Expensive Brand" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Box sx={{ backgroundColor: colors.primary[400], padding: "20px", borderRadius: "8px" }}>
-            <StatBox title={kpis.priceRange} subtitle="Price Range" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress="0.65" />
+            <StatBox title={kpis.priceRange} subtitle="Price Range" icon={<AttachMoneyOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={null} />
           </Box>
         </Grid>
       </Grid>

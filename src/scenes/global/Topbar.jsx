@@ -30,49 +30,52 @@ function Topbar({ isSidebarOpen, setIsSidebarOpen }) {
           </IconButton>
         </Box>
 
-        {/* CENTER - SUBSCRIBE SECTION */}
+        {/* CENTER - DISCLAIMER TEXT & SUBSCRIPTION BUTTON */}
         <Box 
           display="flex" 
           alignItems="center" 
           gap={2}
           position="absolute"
           left="50%"
-          sx={{ transform: "translateX(-50%)" }}
+          sx={{
+            transform: "translateX(-50%)",
+          }}
         >
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                color: iconColor,
-                display: { xs: "none", sm: "block" },
-                fontSize: "0.875rem"
-              }}
-            >
-              To access comprehensive real dataset with dashboard please subscribe
-            </Typography>
-            <Button
-              variant="contained"
-              href="https://forms.gle/kWGff4TJKpFkBBKT9"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                backgroundColor: colors.greenAccent[500],
-                color: "#ffffff",
-                "&:hover": {
-                  backgroundColor: colors.greenAccent[600],
-                },
-                textTransform: "none",
-                px: 2,
-                py: 0.75,
-                fontSize: "0.875rem",
-                fontWeight: 600,
-              }}
-            >
-              Subscribe
-            </Button>
+          <Typography 
+            variant="body2" 
+            sx={{ 
+              color: iconColor,
+              fontSize: "0.875rem",
+              display: { xs: "none", md: "block" }
+            }}
+          >
+            For real dataset and completely accessible dashboard
+          </Typography>
+          <Button
+            variant="contained"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSecSDnPds-ppbwMQG2Z0oTWipWAn3gGMNFXFBI_JP0RkM-b-A/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              backgroundColor: colors.greenAccent[500],
+              color: "#ffffff",
+              "&:hover": {
+                backgroundColor: colors.greenAccent[600],
+              },
+              textTransform: "none",
+              px: 3,
+              py: 1,
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              borderRadius: "8px",
+            }}
+          >
+            Subscription
+          </Button>
         </Box>
 
         {/* RIGHT SIDE - ICONS */}
-        <Box display="flex" alignItems="center">
+        <Box display="flex" alignItems="center" gap={2} ml="auto">
           <IconButton onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlinedIcon sx={{ color: iconColor }} />
@@ -80,13 +83,22 @@ function Topbar({ isSidebarOpen, setIsSidebarOpen }) {
               <LightModeOutlinedIcon sx={{ color: iconColor }} />
             )}
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSecSDnPds-ppbwMQG2Z0oTWipWAn3gGMNFXFBI_JP0RkM-b-A/viewform", "_blank", "noopener,noreferrer")}
+            sx={{ cursor: "pointer" }}
+          >
             <NotificationsOutlinedIcon sx={{ color: iconColor }} />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSecSDnPds-ppbwMQG2Z0oTWipWAn3gGMNFXFBI_JP0RkM-b-A/viewform", "_blank", "noopener,noreferrer")}
+            sx={{ cursor: "pointer" }}
+          >
             <SettingsOutlinedIcon sx={{ color: iconColor }} />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSecSDnPds-ppbwMQG2Z0oTWipWAn3gGMNFXFBI_JP0RkM-b-A/viewform", "_blank", "noopener,noreferrer")}
+            sx={{ cursor: "pointer" }}
+          >
             <PersonOutlinedIcon sx={{ color: iconColor }} />
           </IconButton>
         </Box>
