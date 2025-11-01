@@ -12,7 +12,7 @@ import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
 import LineChart from "../../components/LineChart";
 import DemoNotice from "../../components/DemoNotice";
-import { getData, filterDataframe, formatNumber } from "../../utils/dataGenerator";
+import { getData, filterDataframe, formatNumber, formatWithCommas } from "../../utils/dataGenerator";
 
 function FDF() {
   const theme = useTheme();
@@ -87,9 +87,9 @@ function FDF() {
     const topFDF = Object.entries(fdfGroups).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
 
     return {
-      totalMarketValue: `${(totalMarketValue / 1000).toFixed(1)}M`, // In millions
-      totalQuantity: `${(totalQuantity / 1000).toFixed(1)}M`, // In millions
-      revenuePerFDF: `${(revenuePerFDF / 1000).toFixed(1)}M`, // In millions
+      totalMarketValue: `${formatWithCommas(totalMarketValue / 1000)}M`, // In millions
+      totalQuantity: `${formatWithCommas(totalQuantity / 1000)}M`, // In millions
+      revenuePerFDF: `${formatWithCommas(revenuePerFDF / 1000)}M`, // In millions
       topFDF,
     };
   }, [filteredData]);

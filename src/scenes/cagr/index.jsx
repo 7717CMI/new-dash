@@ -11,7 +11,7 @@ import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
 import LineChart from "../../components/LineChart";
 import DemoNotice from "../../components/DemoNotice";
-import { getData, filterDataframe } from "../../utils/dataGenerator";
+import { getData, filterDataframe, formatWithCommas } from "../../utils/dataGenerator";
 
 function CAGR() {
   const theme = useTheme();
@@ -80,7 +80,7 @@ function CAGR() {
     const maxCAGR = Math.max(...cagrs);
 
     return {
-      marketSize: `${(marketSize / 1000).toFixed(1)}M`, // In millions
+      marketSize: `${formatWithCommas(marketSize / 1000)}M`, // In millions
       avgCAGR: `${avgCAGR.toFixed(2)}%`,
       topSegment,
       maxCAGR: `${maxCAGR.toFixed(2)}%`,

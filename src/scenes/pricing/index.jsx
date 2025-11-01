@@ -10,7 +10,7 @@ import FilterDropdown from "../../components/FilterDropdown";
 import BarChart from "../../components/BarChart";
 import LineChart from "../../components/LineChart";
 import DemoNotice from "../../components/DemoNotice";
-import { getData, filterDataframe } from "../../utils/dataGenerator";
+import { getData, filterDataframe, formatWithCommas } from "../../utils/dataGenerator";
 
 function Pricing() {
   const theme = useTheme();
@@ -75,11 +75,11 @@ function Pricing() {
       .map(([brand, prices]) => [brand, prices.reduce((a, b) => a + b, 0) / prices.length])
       .sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
     const prices = filteredData.map(d => d.price);
-    const priceRange = `$${Math.min(...prices).toFixed(0)} - $${Math.max(...prices).toFixed(0)}`;
+    const priceRange = `$${formatWithCommas(Math.min(...prices), 0)} - $${formatWithCommas(Math.max(...prices), 0)}`;
 
     return {
-      volumeUnits: `${(totalVolume / 1000).toFixed(1)}M`, // In millions
-      avgPrice: `$${avgPrice.toFixed(2)}`,
+      volumeUnits: `${formatWithCommas(totalVolume / 1000)}M`, // In millions
+      avgPrice: `$${formatWithCommas(avgPrice, 2)}`,
       topBrand,
       priceRange,
     };

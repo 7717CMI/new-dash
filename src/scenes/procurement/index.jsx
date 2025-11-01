@@ -12,7 +12,7 @@ import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
 import LineChart from "../../components/LineChart";
 import DemoNotice from "../../components/DemoNotice";
-import { getData, filterDataframe, formatNumber } from "../../utils/dataGenerator";
+import { getData, filterDataframe, formatNumber, formatWithCommas } from "../../utils/dataGenerator";
 
 function Procurement() {
   const theme = useTheme();
@@ -82,7 +82,7 @@ function Procurement() {
     const topProcurement = Object.entries(procurementGroups).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
 
     return {
-      totalQty: `${Math.round(totalQty / 1000)}M`, // Whole numbers in millions
+      totalQty: `${formatWithCommas(totalQty / 1000)}M`, // With commas in millions
       publicPct: `${publicPct}%`,
       privatePct: `${privatePct}%`,
       topProcurement,

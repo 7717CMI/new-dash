@@ -12,7 +12,7 @@ import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
 import LineChart from "../../components/LineChart";
 import DemoNotice from "../../components/DemoNotice";
-import { getData, filterDataframe, formatNumber } from "../../utils/dataGenerator";
+import { getData, filterDataframe, formatNumber, formatWithCommas } from "../../utils/dataGenerator";
 
 function BrandDemographic() {
   const theme = useTheme();
@@ -87,8 +87,8 @@ function BrandDemographic() {
     const topAgeGroup = Object.entries(ageGroups).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
 
     return {
-      totalMarketValue: `${(totalMarketValue / 1000).toFixed(1)}M`, // In millions
-      totalRevenue: `${(totalRevenue / 1000).toFixed(1)}M`,
+      totalMarketValue: `${formatWithCommas(totalMarketValue / 1000)}M`, // In millions
+      totalRevenue: `${formatWithCommas(totalRevenue / 1000)}M`,
       topBrand,
       topAgeGroup,
     };
