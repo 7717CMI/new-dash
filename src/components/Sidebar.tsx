@@ -1,4 +1,4 @@
-import { Home, Activity, Heart, DollarSign, TrendingUp, PieChart, ShoppingCart, Pill, FlaskConical, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Home, Activity, Heart, TrendingUp, Mail, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Logo } from './Logo'
@@ -28,12 +28,7 @@ export function Sidebar({ activeItem = 'Home', isOpen = true, onClose, onNavigat
     { icon: Home, label: 'Home', id: 'Home' },
     { icon: Activity, label: 'Epidemiology', id: 'Epidemiology' },
     { icon: Heart, label: 'Vaccination Rate', id: 'VaccinationRate' },
-    { icon: DollarSign, label: 'Pricing Analysis', id: 'Pricing' },
-    { icon: TrendingUp, label: 'CAGR Analysis', id: 'CAGR' },
-    { icon: PieChart, label: 'MSA Comparison', id: 'MSAComparison' },
-    { icon: ShoppingCart, label: 'Procurement', id: 'Procurement' },
-    { icon: Pill, label: 'Brand-Demographic', id: 'BrandDemographic' },
-    { icon: FlaskConical, label: 'FDF Analysis', id: 'FDF' },
+    { icon: TrendingUp, label: 'Market Analysis', id: 'MarketAnalysis' },
     { icon: Mail, label: 'Contact Us', id: 'Contact' },
   ]
 

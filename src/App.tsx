@@ -8,12 +8,7 @@ import { LoadingScreen } from './components/LoadingScreen'
 import { Home } from './pages/Home'
 import { Epidemiology } from './pages/Epidemiology'
 import { VaccinationRate } from './pages/VaccinationRate'
-import { Pricing } from './pages/Pricing'
-import { CAGR } from './pages/CAGR'
-import { MSAComparison } from './pages/MSAComparison'
-import { Procurement } from './pages/Procurement'
-import { BrandDemographic } from './pages/BrandDemographic'
-import { FDF } from './pages/FDF'
+import { MarketAnalysis } from './pages/MarketAnalysis'
 import { Contact } from './pages/Contact'
 
 function App() {
@@ -52,18 +47,8 @@ function App() {
         return <Epidemiology onNavigate={setActivePage} />
       case 'VaccinationRate':
         return <VaccinationRate onNavigate={setActivePage} />
-      case 'Pricing':
-        return <Pricing onNavigate={setActivePage} />
-      case 'CAGR':
-        return <CAGR onNavigate={setActivePage} />
-      case 'MSAComparison':
-        return <MSAComparison onNavigate={setActivePage} />
-      case 'Procurement':
-        return <Procurement onNavigate={setActivePage} />
-      case 'BrandDemographic':
-        return <BrandDemographic onNavigate={setActivePage} />
-      case 'FDF':
-        return <FDF onNavigate={setActivePage} />
+      case 'MarketAnalysis':
+        return <MarketAnalysis onNavigate={setActivePage} />
       case 'Contact':
         return <Contact onNavigate={setActivePage} />
       default:
@@ -76,12 +61,7 @@ function App() {
       'Home': 'Home',
       'Epidemiology': 'Epidemiology Analysis',
       'VaccinationRate': 'Vaccination Rate Analysis',
-      'Pricing': 'Pricing Analysis',
-      'CAGR': 'CAGR Analysis',
-      'MSAComparison': 'MSA Comparison',
-      'Procurement': 'Procurement Analysis',
-      'BrandDemographic': 'Brand-Demographic Analysis',
-      'FDF': 'FDF Analysis',
+      'MarketAnalysis': 'Market Analysis',
       'Contact': 'Contact Us'
     }
     return titles[activePage] || 'Home'

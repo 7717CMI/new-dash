@@ -46,45 +46,10 @@ export function Home({ onNavigate }: HomeProps) {
 
   const marketAnalysisModules: Module[] = [
     {
-      title: "Pricing Analysis",
-      subtitle: "Price trends and elasticity insights",
-      icon: DollarSign,
-      id: "Pricing",
-      gradient: "#0075FF",
-    },
-    {
-      title: "CAGR Analysis",
-      subtitle: "Growth rates by segments",
+      title: "Market Analysis",
+      subtitle: "Market value and volume analysis by segments",
       icon: TrendingUp,
-      id: "CAGR",
-      gradient: "#0075FF",
-    },
-    {
-      title: "MSA Comparison",
-      subtitle: "Market share comparative analysis",
-      icon: PieChart,
-      id: "MSAComparison",
-      gradient: "#0075FF",
-    },
-    {
-      title: "Procurement Analysis",
-      subtitle: "Public and private procurement tracking",
-      icon: ShoppingCart,
-      id: "Procurement",
-      gradient: "#0075FF",
-    },
-    {
-      title: "Brand-Demographic",
-      subtitle: "Brand performance by demographics",
-      icon: Pill,
-      id: "BrandDemographic",
-      gradient: "#0075FF",
-    },
-    {
-      title: "FDF Analysis",
-      subtitle: "Formulation and ROA performance",
-      icon: FlaskConical,
-      id: "FDF",
+      id: "MarketAnalysis",
       gradient: "#0075FF",
     },
   ]
@@ -132,7 +97,13 @@ export function Home({ onNavigate }: HomeProps) {
   }
 
   const handleCategoryClick = (categoryTitle: string) => {
-    setSelectedCategory(categoryTitle)
+    const category = categories.find(cat => cat.title === categoryTitle)
+    // If category has only one module, navigate directly to it
+    if (category && category.modules.length === 1) {
+      onNavigate(category.modules[0].id)
+    } else {
+      setSelectedCategory(categoryTitle)
+    }
   }
 
   const handleBackClick = () => {

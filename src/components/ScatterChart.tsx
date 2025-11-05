@@ -61,7 +61,20 @@ export function ScatterChart({ data, xDataKey, yDataKey, nameKey, xAxisLabel, yA
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <div className="relative w-full h-full">
+      {/* Demo Data Watermark */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+        style={{ opacity: 0.12 }}
+      >
+        <span 
+          className="text-4xl font-bold text-gray-400 dark:text-gray-600 select-none"
+          style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }}
+        >
+          Demo Data
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height="100%" className="relative z-10">
       <RechartsScatterChart
         margin={{
           top: 20,
@@ -115,6 +128,7 @@ export function ScatterChart({ data, xDataKey, yDataKey, nameKey, xAxisLabel, yA
         </Scatter>
       </RechartsScatterChart>
     </ResponsiveContainer>
+    </div>
   )
 }
 

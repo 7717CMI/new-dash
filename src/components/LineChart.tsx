@@ -94,17 +94,42 @@ export function LineChart({ data, dataKeys, nameKey, colors = ['#0075FF', '#4FD1
             ? 'bg-navy-card border-electric-blue text-white' 
             : 'bg-white border-electric-blue text-gray-900'
         }`}>
-          <p className="font-bold text-sm mb-2">{label}</p>
-          {countriesToShow.length > 0 && (
-            <p className="text-sm mb-1">
-              {countriesToShow.length === 1 ? 'Country' : 'Countries'}: <strong>{countriesToShow.join(', ')}</strong>
-            </p>
-          )}
-          {payload.map((entry: any, index: number) => (
-            <p key={index} className="text-sm" style={{ color: entry.color }}>
-              {entry.name}: <strong>{formatNumber(entry.value)}</strong> {isVolume ? 'units' : ''}
-            </p>
-          ))}
+          <p className="font-bold text-sm mb-2">{nameKey === 'year' ? `Year: ${label}` : label}</p>
+          {payload.map((entry: any, index: number) => {
+            // Format label for country-specific keys
+            let displayName = entry.name
+            if (entry.dataKey && entry.dataKey.includes('_prevalence')) {
+              const country = entry.dataKey.replace('_prevalence', '')
+              displayName = `${country} - Prevalence`
+            } else if (entry.dataKey && entry.dataKey.includes('_incidence')) {
+              const country = entry.dataKey.replace('_incidence', '')
+              displayName = `${country} - Incidence`
+            }
+            
+            // Get YoY value if available
+            const yoyKey = entry.dataKey === 'prevalence' ? 'prevalence_yoy' : 
+                          entry.dataKey === 'incidence' ? 'incidence_yoy' :
+                          entry.dataKey.includes('_prevalence') ? `${entry.dataKey.replace('prevalence', 'prevalence_yoy')}` :
+                          entry.dataKey.includes('_incidence') ? `${entry.dataKey.replace('incidence', 'incidence_yoy')}` :
+                          entry.dataKey && typeof entry.dataKey === 'string' ? `${entry.dataKey}_yoy` : null
+            
+            const yoyValue = yoyKey && payloadData[yoyKey] !== null && payloadData[yoyKey] !== undefined 
+              ? payloadData[yoyKey] 
+              : null
+            
+            return (
+              <div key={index}>
+                <p className="text-sm" style={{ color: entry.color }}>
+                  {displayName}: <strong>{formatNumber(entry.value)}</strong> {isVolume ? 'units' : ''}
+                </p>
+                {yoyValue !== null && (
+                  <p className="text-xs ml-2 opacity-75" style={{ color: entry.color }}>
+                    YoY: {yoyValue > 0 ? '+' : ''}{yoyValue.toFixed(1)}%
+                  </p>
+                )}
+              </div>
+            )
+          })}
         </div>
       )
     }
@@ -112,7 +137,20 @@ export function LineChart({ data, dataKeys, nameKey, colors = ['#0075FF', '#4FD1
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <div className="relative w-full h-full">
+      {/* Demo Data Watermark */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+        style={{ opacity: 0.12 }}
+      >
+        <span 
+          className="text-4xl font-bold text-gray-400 dark:text-gray-600 select-none"
+          style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }}
+        >
+          Demo Data
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height="100%" className="relative z-10">
       <RechartsLineChart
         data={data}
           margin={{
@@ -162,11 +200,24 @@ export function LineChart({ data, dataKeys, nameKey, colors = ['#0075FF', '#4FD1
         <Tooltip content={<CustomTooltip />} />
         <Legend 
           wrapperStyle={{ 
-            color: isDark ? '#FFFFFF' : '#2D3748',
+            color: isDark ? '#FFFFFF' : '#2D3748', 
             paddingTop: '5px',
             fontSize: '11px'
           }}
           iconSize={8}
+          formatter={(value) => {
+            // Format country-specific labels: "USA_prevalence" -> "USA - Prevalence"
+            if (value.includes('_prevalence')) {
+              const country = value.replace('_prevalence', '')
+              return `${country} - Prevalence`
+            }
+            if (value.includes('_incidence')) {
+              const country = value.replace('_incidence', '')
+              return `${country} - Incidence`
+            }
+            // Capitalize first letter of other labels
+            return value.charAt(0).toUpperCase() + value.slice(1)
+          }}
         />
         {dataKeys.map((key, index) => (
           <Line
@@ -181,6 +232,7 @@ export function LineChart({ data, dataKeys, nameKey, colors = ['#0075FF', '#4FD1
         ))}
       </RechartsLineChart>
     </ResponsiveContainer>
+    </div>
   )
 }
 

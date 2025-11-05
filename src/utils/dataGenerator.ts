@@ -88,7 +88,7 @@ const generateComprehensiveData = (): VaccineData[] => {
     }
   }
   
-  const ageGroups = ["Pediatric", "Adult", "Elderly", "All Ages"]
+  const ageGroups = ["Pediatric / Children / Adolescence", "Adult", "Geriatric"]
   const roaTypes = ["IM", "SC", "Oral", "Intranasal"]
   const fdfTypes = ["Vial", "Prefilled Syringe", "Multi-dose Vial", "Oral Solution"]
   const procurementTypes = ["UNICEF", "GAVI", "PAHO", "Hospital", "Private Clinic", "Government"]
@@ -143,7 +143,7 @@ const generateComprehensiveData = (): VaccineData[] => {
             const brandMult = brandPremiumMap[brand] || 1.0
             for (const ageGroup of ageGroups) {
               // Age group multipliers
-              const ageMult = ageGroup === 'Pediatric' ? 1.3 : ageGroup === 'Elderly' ? 1.1 : 1.0
+              const ageMult = ageGroup === 'Pediatric / Children / Adolescence' ? 1.3 : ageGroup === 'Geriatric' ? 1.1 : 1.0
               for (const gender of ["Male", "Female"]) {
                 // Gender multiplier (slight variation)
                 const genderMult = gender === "Male" ? 1.05 : 0.95

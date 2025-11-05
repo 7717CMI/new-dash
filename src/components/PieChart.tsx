@@ -7,7 +7,7 @@ import {
   Legend,
 } from 'recharts'
 import { useTheme } from '../context/ThemeContext'
-import { formatNumber } from '../utils/dataGenerator'
+import { formatNumber, formatWithCommas } from '../utils/dataGenerator'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#FF6B9D', '#C44569', '#1B9CFC', '#55E6C1']
 
@@ -42,23 +42,31 @@ export function PieChart({ data, dataKey, nameKey, colors = COLORS, title, isVol
       const countriesToShow = Array.isArray(showCountry) ? showCountry : (showCountry && country ? [country] : [])
       
       return (
-        <div className={`p-3 rounded-lg border-2 ${
+        <div className={`p-4 rounded-lg border-2 shadow-lg ${
           isDark 
             ? 'bg-navy-card border-electric-blue text-white' 
             : 'bg-white border-electric-blue text-gray-900'
         }`}>
-          <p className="font-bold text-sm mb-2">{nameLabel}: {actualName}</p>
+          <p className="font-bold text-base mb-3">{nameLabel}: {actualName}</p>
           {countriesToShow.length > 0 && (
-            <p className="text-sm mb-1">
+            <p className="text-sm mb-2">
               {countriesToShow.length === 1 ? 'Country' : 'Countries'}: <strong>{countriesToShow.join(', ')}</strong>
             </p>
           )}
-          <p className="text-sm">
-            {valueLabel}: <strong>{formatNumber(value)}</strong>
-          </p>
-          <p className="text-sm">
-            Percentage: <strong>{percentage.toFixed(1)}%</strong>
-          </p>
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">{valueLabel}:</span>
+              <span className="text-sm font-bold">{formatWithCommas(value, 2)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Percentage:</span>
+              <span className="text-sm font-bold">{percentage.toFixed(1)}%</span>
+            </div>
+          </div>
+          <div className="mt-3 pt-3 border-t border-gray-400 flex items-center justify-between">
+            <span className="font-semibold text-base">Total:</span>
+            <span className="font-bold text-base">{formatWithCommas(total, 2)}</span>
+          </div>
         </div>
       )
     }
@@ -66,7 +74,20 @@ export function PieChart({ data, dataKey, nameKey, colors = COLORS, title, isVol
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <div className="relative w-full h-full">
+      {/* Demo Data Watermark */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+        style={{ opacity: 0.12 }}
+      >
+        <span 
+          className="text-4xl font-bold text-gray-400 dark:text-gray-600 select-none"
+          style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }}
+        >
+          Demo Data
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height="100%" className="relative z-10">
       <RechartsPieChart>
         {title && (
           <text
@@ -99,18 +120,20 @@ export function PieChart({ data, dataKey, nameKey, colors = COLORS, title, isVol
         <Tooltip content={<CustomTooltip />} />
         <Legend 
           wrapperStyle={{ 
-            color: isDark ? '#FFFFFF' : '#2D3748', 
-            paddingTop: '10px',
-            fontSize: '11px'
+            color: isDark ? '#E2E8F0' : '#2D3748', 
+            paddingTop: '15px',
+            fontSize: '12px',
+            fontWeight: 500
           }}
-          iconSize={10}
+          iconSize={12}
+          iconType="circle"
           formatter={(value, entry: any) => {
             // Get the actual name from the payload (data entry)
             const payload = entry.payload
             const actualName = payload && payload[nameKey] ? payload[nameKey] : value
             const percentage = total > 0 ? ((payload && payload[dataKey] ? payload[dataKey] : 0) / total) * 100 : 0
             return (
-              <span style={{ fontSize: '11px' }}>
+              <span style={{ fontSize: '12px', fontWeight: 500 }}>
                 {`${actualName} (${percentage.toFixed(1)}%)`}
               </span>
             )
@@ -118,6 +141,7 @@ export function PieChart({ data, dataKey, nameKey, colors = COLORS, title, isVol
         />
       </RechartsPieChart>
     </ResponsiveContainer>
+    </div>
   )
 }
 

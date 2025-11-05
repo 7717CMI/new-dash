@@ -36,19 +36,19 @@ export function BarChart({ data, dataKey, nameKey, color = '#0075FF', xAxisLabel
       const countriesToShow = Array.isArray(showCountry) ? showCountry : (showCountry && country ? [country] : [])
       
       return (
-        <div className={`p-3 rounded-lg border-2 ${
+        <div className={`p-4 rounded-lg border-2 shadow-lg ${
           isDark 
             ? 'bg-navy-card border-electric-blue text-white' 
             : 'bg-white border-electric-blue text-gray-900'
         }`}>
-          <p className="font-bold text-sm mb-2">{label}</p>
+          <p className="font-bold text-base mb-2">{label}</p>
           {countriesToShow.length > 0 && (
             <p className="text-sm mb-1">
               {countriesToShow.length === 1 ? 'Country' : 'Countries'}: <strong>{countriesToShow.join(', ')}</strong>
             </p>
           )}
-          <p className="text-sm">
-            {valueLabel}: <strong>{formatNumber(value)}</strong>
+          <p className="text-sm font-bold">
+            {valueLabel}: {formatNumber(value)}
           </p>
         </div>
       )
@@ -57,56 +57,78 @@ export function BarChart({ data, dataKey, nameKey, color = '#0075FF', xAxisLabel
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <div className="relative w-full h-full">
+      {/* Demo Data Watermark */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+        style={{ opacity: 0.12 }}
+      >
+        <span 
+          className="text-4xl font-bold text-gray-400 dark:text-gray-600 select-none"
+          style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }}
+        >
+          Demo Data
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height="100%" className="relative z-10">
       <RechartsBarChart
         data={data}
-          margin={{
-            top: 5,
-            right: 15,
-            left: 65,
-            bottom: 100,
-          }}
+        margin={{
+          top: 50,
+          right: 40,
+          left: 80,
+          bottom: 80,
+        }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#4A5568' : '#E2E8F0'} />
+        <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#4A5568' : '#EAEAEA'} />
         <XAxis 
           dataKey={nameKey} 
-          stroke={isDark ? '#FFFFFF' : '#2D3748'}
-          style={{ fontSize: '10px' }}
-          angle={-45}
-          textAnchor="end"
-          height={90}
+          stroke={isDark ? '#A0AEC0' : '#4A5568'}
+          style={{ fontSize: '13px', fontWeight: 500 }}
+          angle={0}
+          textAnchor="middle"
+          height={60}
           interval={0}
+          tick={{ fill: isDark ? '#E2E8F0' : '#2D3748' }}
+          tickMargin={15}
           label={{
             value: xAxisLabel || nameKey,
             position: 'insideBottom',
-            offset: 5,
+            offset: -10,
             style: { 
-              fontSize: '11px', 
-              fill: isDark ? '#FFFFFF' : '#2D3748'
+              fontSize: '14px', 
+              fontWeight: 500,
+              fill: isDark ? '#E2E8F0' : '#2D3748'
             }
           }}
         />
         <YAxis 
-          stroke={isDark ? '#FFFFFF' : '#2D3748'}
-          style={{ fontSize: '10px' }}
+          stroke={isDark ? '#A0AEC0' : '#4A5568'}
+          style={{ fontSize: '13px', fontWeight: 500 }}
           tickFormatter={(value) => formatNumber(value)}
-          width={70}
+          width={75}
+          tick={{ fill: isDark ? '#E2E8F0' : '#2D3748' }}
+          tickMargin={12}
+          domain={[0, 'auto']}
+          allowDataOverflow={false}
           label={{
             value: yAxisLabel || 'Value',
             angle: -90,
             position: 'insideLeft',
-            offset: 15,
+            offset: 20,
             style: { 
-              fontSize: '11px', 
-              fill: isDark ? '#FFFFFF' : '#2D3748',
+              fontSize: '14px', 
+              fontWeight: 500,
+              fill: isDark ? '#E2E8F0' : '#2D3748',
               textAnchor: 'middle'
             }
           }}
         />
         <Tooltip content={<CustomTooltip />} />
-        <Bar dataKey={dataKey} fill={color} radius={[8, 8, 0, 0]} />
+        <Bar dataKey={dataKey} fill={color} radius={[6, 6, 0, 0]} maxBarSize={50} />
       </RechartsBarChart>
     </ResponsiveContainer>
+    </div>
   )
 }
 
