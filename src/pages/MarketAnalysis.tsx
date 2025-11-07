@@ -892,7 +892,7 @@ export function MarketAnalysis({ onNavigate }: MarketAnalysisProps) {
               <div className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-[550px] flex flex-col ${isDark ? 'bg-navy-card border-2 border-navy-light' : 'bg-white border-2 border-gray-200'}`}>
                 <div className="mb-4 pb-4 border-b border-gray-200 dark:border-navy-light">
                   <h3 className="text-lg font-bold text-electric-blue dark:text-cyan-accent mb-1">
-                    {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} Performance by Year
+                    {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} by Product Type by Year
                   </h3>
                   <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
                     {getDataLabel()}
@@ -924,7 +924,7 @@ export function MarketAnalysis({ onNavigate }: MarketAnalysisProps) {
                   <div className={`w-1 h-10 rounded-full ${isDark ? 'bg-cyan-accent' : 'bg-electric-blue'}`}></div>
                   <InfoTooltip content={`• Shows ${filters.marketEvaluation === 'By Volume' ? 'market volume' : 'market size'} share across different segments by year\n• Each stacked bar represents a year with segments showing the proportion\n• X-axis: Year, Y-axis: ${filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'}\n• Hover over bars to see detailed values and percentages`}>
                     <h2 className="text-3xl font-bold text-text-primary-light dark:text-text-primary-dark cursor-help">
-                      {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} Share Analysis
+                      {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} Analysis by Segments
                     </h2>
                   </InfoTooltip>
                 </div>
@@ -1131,7 +1131,7 @@ export function MarketAnalysis({ onNavigate }: MarketAnalysisProps) {
               <div className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-[550px] flex flex-col ${isDark ? 'bg-navy-card border-2 border-navy-light' : 'bg-white border-2 border-gray-200'}`}>
                 <div className="mb-4 pb-4 border-b border-gray-200 dark:border-navy-light">
                   <h3 className="text-lg font-bold text-electric-blue dark:text-cyan-accent mb-1">
-                    {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} Performance by Year
+                    {filters.marketEvaluation === 'By Volume' ? 'Market Volume' : 'Market Size'} by Country by Year
                   </h3>
                   <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
                     {getDataLabel()}

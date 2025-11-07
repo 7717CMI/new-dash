@@ -857,7 +857,7 @@ export function CustomerIntelligence({ onNavigate }: CustomerIntelligenceProps) 
               <div className="flex items-center gap-3 mb-2">
                 <div className={`w-1 h-8 rounded-full ${isDark ? 'bg-cyan-accent' : 'bg-electric-blue'}`}></div>
                 <h3 className="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">
-                  Volume by Shovel Type
+                  Volume by Shovel Type - 2025
                 </h3>
               </div>
               <p className="text-base text-text-secondary-light dark:text-text-secondary-dark ml-4">
